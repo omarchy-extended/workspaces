@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "omext.workspaces",
   "name": "Workspaces (omext)",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "omarchy-extended",
   "description": "Workspaces that keep out of the way (omext workspaces): the bar shows the first, and another only while something is on it; window counts, and a list of a workspace's windows when it's pointed at.",
   "kinds": [
