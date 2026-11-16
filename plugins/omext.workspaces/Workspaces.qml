@@ -54,10 +54,12 @@ BarWidget {
       if (ipc.pinned || tags.indexOf("omext-docked") !== -1) continue
       var cls = (t.wayland && t.wayland.appId) || ipc["class"] || ipc.initialClass || ""
       var e = !cls ? null : coreApps.item ? coreApps.item.ofClass(cls) : DesktopEntries.heuristicLookup(cls)
+      // A browser profile's own icon (omext core), so its windows tell apart.
+      var profile = coreApps.item && coreApps.item.profileIconOf ? coreApps.item.profileIconOf({ "class": cls, title: t.title || ipc.title || "" }) : ""
       out.push({
         address: ipc.address || ("0x" + t.address),
         app: e && e.name ? e.name : cls,
-        icon: e && e.icon ? Quickshell.iconPath(e.icon, true) : Quickshell.iconPath("application-x-executable", true),
+        icon: profile ? "file://" + profile : e && e.icon ? Quickshell.iconPath(e.icon, true) : Quickshell.iconPath("application-x-executable", true),
         title: t.title || ipc.title || cls
       })
     }
